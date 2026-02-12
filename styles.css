@@ -1,0 +1,282 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+  font-family: 'Dancing Script', cursive;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Floating Hearts ── */
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -60px;
+  font-size: 24px;
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* ── Screens ── */
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 10;
+  width: 100%;
+  padding: 20px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ── Card ── */
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 8px 32px rgba(233, 30, 99, 0.2);
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+}
+
+.card h1 {
+  font-size: 2.4rem;
+  color: #c2185b;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.card h2 {
+  font-size: 2rem;
+  color: #c2185b;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.card p {
+  font-size: 1.3rem;
+  color: #880e4f;
+  margin-bottom: 8px;
+}
+
+.emoji-decoration {
+  font-size: 80px;
+  margin-bottom: 16px;
+  display: block;
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* ── Buttons ── */
+.btn-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 40px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, #e91e63, #c2185b);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+}
+
+.btn-yes:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5);
+}
+
+.btn-no {
+  background: #f3e5f5;
+  color: #ad1457;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 20;
+}
+
+.btn-no.dodging {
+  position: fixed;
+  transition: none;
+}
+
+/* ── Celebration Screen ── */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.celebration-text {
+  font-size: 2.2rem;
+  color: #c2185b;
+  margin-bottom: 24px;
+  animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.message-area {
+  width: 100%;
+  margin-top: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.message-area.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.message-area textarea {
+  width: 100%;
+  min-height: 100px;
+  border: 2px solid #f48fb1;
+  border-radius: 16px;
+  padding: 16px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  color: #880e4f;
+  background: rgba(255, 255, 255, 0.7);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.message-area textarea::placeholder {
+  color: #e91e63;
+  opacity: 0.6;
+}
+
+.message-area textarea:focus {
+  border-color: #e91e63;
+}
+
+.btn-send {
+  margin-top: 16px;
+  background: linear-gradient(135deg, #e91e63, #c2185b);
+  color: #fff;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 36px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-send:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5);
+}
+
+.btn-send:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.send-status {
+  font-size: 1rem;
+  margin-top: 8px;
+  min-height: 1.4em;
+  color: #c2185b;
+}
+
+/* ── Thank You Screen ── */
+.thankyou-emoji {
+  font-size: 60px;
+  margin-bottom: 16px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .card {
+    padding: 32px 24px;
+  }
+  .card h1 {
+    font-size: 1.8rem;
+  }
+  .card h2 {
+    font-size: 1.6rem;
+  }
+  .emoji-decoration {
+    font-size: 60px;
+  }
+  .btn {
+    padding: 12px 28px;
+    font-size: 1.2rem;
+  }
+  .celebration-text {
+    font-size: 1.7rem;
+  }
+}

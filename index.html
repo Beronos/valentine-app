@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Question For You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- Floating Hearts Background -->
+  <div class="hearts-bg" id="hearts-bg"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Screen 1: The Question -->
+  <div class="screen active" id="screen-question">
+    <div class="card">
+      <span class="emoji-decoration">🧸💕</span>
+      <h1>Will you be my Valentine? 💗</h1>
+      <p>I have a very important question...</p>
+      <div class="btn-row">
+        <button class="btn btn-yes" id="btn-yes">Yes!</button>
+        <button class="btn btn-no" id="btn-no">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 2: Celebration -->
+  <div class="screen" id="screen-celebration">
+    <div class="card">
+      <div class="celebration-text">🎉 Yayy! I knew you'd say yes! 🎉</div>
+      <p>You just made me the happiest person! 💖</p>
+      <div class="message-area" id="message-area">
+        <textarea id="sweet-message" placeholder="Say something sweet to me... 💌"></textarea>
+        <button class="btn-send" id="btn-send">Send with Love 💌</button>
+        <div class="send-status" id="send-status"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screen 3: Thank You -->
+  <div class="screen" id="screen-thankyou">
+    <div class="card">
+      <span class="thankyou-emoji">💖</span>
+      <h2>Thank you, my love!</h2>
+      <p>Your message made my heart melt 🥰</p>
+      <p style="margin-top: 16px; font-size: 1.5rem;">Can't wait to see you! 💐</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
