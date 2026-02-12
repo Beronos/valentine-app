@@ -38,19 +38,27 @@ function showScreen(id) {
 // ═══════════════════════════════════════════
 const btnNo = document.getElementById("btn-no");
 
-function dodgeButton() {
-  const padding = 20;
-  const btnW = btnNo.offsetWidth;
-  const btnH = btnNo.offsetHeight;
-  const newX = Math.max(padding, Math.min(padding + Math.random() * (window.innerWidth - btnW - padding * 2), window.innerWidth - btnW - padding));
-  const newY = Math.max(padding, Math.min(padding + Math.random() * (window.innerHeight - btnH - padding * 2), window.innerHeight - btnH - padding));
+let movedRight = false;
+let originalX = null;
+let originalY = null;
 
-  if (!btnNo.classList.contains("dodging")) {
-    btnNo.classList.add("dodging");
+function dodgeButton() {
+  const btnW = btnNo.offsetWidth;
+
+  // store original position only once
+  if (originalX === null || originalY === null) {
+    originalX = btnNo.offsetLeft;
+    originalY = btnNo.offsetTop;
   }
 
-  btnNo.style.left = newX + "px";
-  btnNo.style.top = newY + "px";
+  // toggle between original and moved position
+  if (!movedRight) {
+    btnNo.style.left = (originalX + btnW) + "px";
+    movedRight = true;
+  } else {
+    btnNo.style.left = originalX - 2 * btnW + "px";
+    movedRight = false;
+  }
 }
 
 btnNo.addEventListener("click", dodgeButton);
