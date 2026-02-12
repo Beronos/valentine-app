@@ -1,9 +1,9 @@
 // ═══════════════════════════════════════════
 //  EmailJS Configuration — Fill in your keys
 // ═══════════════════════════════════════════
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY  = "kwnDs0QTiQGCdl7O-";
+const EMAILJS_SERVICE_ID  = "service_xy2sghh";
+const EMAILJS_TEMPLATE_ID = "template_a0hi624";
 
 // ═══════════════════════════════════════════
 //  Floating Hearts
